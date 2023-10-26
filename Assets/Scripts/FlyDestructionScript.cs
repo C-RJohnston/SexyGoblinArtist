@@ -7,6 +7,7 @@ public class FlyDestructionScript : MonoBehaviour
 {
     [SerializeField] private GameObject splat;
     private GameObject _brushParent;
+    private GameManager _gameManager;
     
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class FlyDestructionScript : MonoBehaviour
              * draw splat
              */
             Transform t = transform;
+            var _gameManager = GameObject.Find("GameManager");
             Instantiate(splat, t.position, t.rotation, _brushParent.transform);
 
             /*
