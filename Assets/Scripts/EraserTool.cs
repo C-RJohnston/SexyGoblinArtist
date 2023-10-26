@@ -14,9 +14,9 @@ public class EraserTool : MonoBehaviour
     LineRenderer currentLineRenderer;
     public Collider2D canvasCollider;
 
-    private int renderOrder = 500;
-
     Vector2 lastPos;
+
+    public GameManager gameManager;
 
     private void Start()
     {
@@ -76,8 +76,8 @@ public class EraserTool : MonoBehaviour
         GameObject brushInstance = Instantiate(eraser);
 
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
-        renderOrder++;
-        currentLineRenderer.sortingOrder = renderOrder;
+        gameManager.renderOrder++;
+        currentLineRenderer.sortingOrder = gameManager.renderOrder;
         currentLineRenderer.transform.parent = strokeParent.transform;
 
         //because you gotta have 2 points to start a line renderer, 

@@ -17,7 +17,9 @@ public class DrawTool : MonoBehaviour
     LineRenderer currentLineRenderer;
     public Collider2D canvasCollider;
 
-    private int renderOrder= 0;
+    
+
+    public GameManager gameManager;
 
     Vector2 lastPos;
     private void Start()
@@ -104,9 +106,10 @@ public class DrawTool : MonoBehaviour
     void CreateBrush()
     {
         GameObject brushInstance = Instantiate(currentBrush);
-        renderOrder++;
+        gameManager.renderOrder++;
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
-        currentLineRenderer.sortingOrder = renderOrder;
+
+        currentLineRenderer.sortingOrder = gameManager.renderOrder;
         currentLineRenderer.transform.parent = strokeParent.transform;
 
         //because you gotta have 2 points to start a line renderer, 
