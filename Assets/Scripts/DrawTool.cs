@@ -7,12 +7,12 @@ public class DrawTool : MonoBehaviour
     public Camera m_camera;
 
     public List<GameObject> brushList;
+    public LineRenderer[] brushLines;
     private GameObject currentBrush;
     private int brushOrder = 0;
 
     public GameObject strokeParent;
-    public LineRenderer[] brushLines;
-
+    
 
     LineRenderer currentLineRenderer;
     public Collider2D canvasCollider;
@@ -23,6 +23,7 @@ public class DrawTool : MonoBehaviour
     private void Start()
     {
         currentBrush = brushList[0];
+        
         foreach (LineRenderer lineRenderer in brushLines)
         {
             lineRenderer.startWidth = 0.1f;
@@ -34,13 +35,13 @@ public class DrawTool : MonoBehaviour
 
     private void Update()
     {
-        /*
-         * var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        
+        var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (canvasCollider.bounds.IntersectRay(mouseRay))
         {
             Drawing();
         }
-        */
+        
         Drawing();
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
