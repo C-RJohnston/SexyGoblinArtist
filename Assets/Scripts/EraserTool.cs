@@ -2,35 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawTool : MonoBehaviour
+public class EraserTool : MonoBehaviour
 {
     public Camera m_camera;
 
-    public List<GameObject> brushList;
-    private GameObject currentBrush;
-    private int brushOrder = 0;
+    public GameObject eraser;
+    private LineRenderer eraserRenderer;
 
     public GameObject strokeParent;
-    public LineRenderer[] brushLines;
-
 
     LineRenderer currentLineRenderer;
     public Collider2D canvasCollider;
 
-    private int renderOrder= 0;
+    private int renderOrder = 500;
 
     Vector2 lastPos;
+
     private void Start()
     {
-        currentBrush = brushList[0];
-        foreach (LineRenderer lineRenderer in brushLines)
-        {
-            lineRenderer.startWidth = 0.1f;
-            lineRenderer.endWidth = 0.1f;
-        }
+        eraserRenderer = eraser.GetComponent<LineRenderer>();
+        eraserRenderer.startWidth = 0.1f;
+        eraserRenderer.endWidth = 0.1f;
+
     }
-
-
 
     private void Update()
     {
@@ -51,36 +45,13 @@ public class DrawTool : MonoBehaviour
         {
             ChangeSize(-1);
         }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            ChangeBrush();
-        }
-                
     }
 
     public void ChangeSize(int mult)
     {
-        
-        foreach (LineRenderer lineRenderer in brushLines)
-        {
-            lineRenderer.startWidth += 0.03f * mult;
-            lineRenderer.endWidth += 0.03f * mult;
-        }
-    }
 
-    public void ChangeBrush()
-    {
-        brushOrder++;
-        if (brushOrder < brushList.Count)
-        {
-            currentBrush = brushList[brushOrder];
-        }
-        else
-        {
-            brushOrder = 0;
-            currentBrush = brushList[brushOrder];
-        }
+        eraserRenderer.startWidth += .03f * mult;
+        eraserRenderer.endWidth += .03f * mult;
     }
 
 
@@ -102,9 +73,10 @@ public class DrawTool : MonoBehaviour
 
     void CreateBrush()
     {
-        GameObject brushInstance = Instantiate(currentBrush);
-        renderOrder++;
+        GameObject brushInstance = Instantiate(eraser);
+
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
+        renderOrder++;
         currentLineRenderer.sortingOrder = renderOrder;
         currentLineRenderer.transform.parent = strokeParent.transform;
 
