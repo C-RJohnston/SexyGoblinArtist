@@ -385,6 +385,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DrawTool
       objectReference: {fileID: 0}
+    - target: {fileID: 217406323033939158, guid: f2a81c6c3c817416aaf89a448ead16fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2a81c6c3c817416aaf89a448ead16fa, type: 3}
 --- !u!1001 &5458123527379105906
@@ -441,6 +445,10 @@ PrefabInstance:
     - target: {fileID: 5458123528408868178, guid: 90faaf3af52044450b094e573ddf5668, type: 3}
       propertyPath: m_Name
       value: EraserTool
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458123528408868178, guid: 90faaf3af52044450b094e573ddf5668, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5458123528408868179, guid: 90faaf3af52044450b094e573ddf5668, type: 3}
       propertyPath: m_camera
