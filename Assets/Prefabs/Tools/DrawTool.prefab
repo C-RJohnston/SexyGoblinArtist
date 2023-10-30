@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 217406323033939156}
   - component: {fileID: 217406323033939157}
+  - component: {fileID: -3329050679217992078}
   m_Layer: 4
   m_Name: DrawTool
   m_TagString: Untagged
@@ -51,11 +52,26 @@ MonoBehaviour:
   - {fileID: 4890552590630788499, guid: 1d60b36fab89a4c8daa47dba3ea9ac33, type: 3}
   - {fileID: 8892454353255890919, guid: 9aaf649d42df84aac944ee625e49c292, type: 3}
   - {fileID: 5756556387985711422, guid: 853b86b1257a9489695b34d8710558d3, type: 3}
-  strokeParent: {fileID: 0}
   brushLines:
   - {fileID: 1802482195768209943, guid: 00c106b6f772942a892a2929ed3ee29a, type: 3}
   - {fileID: 5319486255475629359, guid: 20629fcc3feb84454b2474f3bd7e7cb3, type: 3}
   - {fileID: 2949948551668028572, guid: 1d60b36fab89a4c8daa47dba3ea9ac33, type: 3}
   - {fileID: 1130724128988314572, guid: 9aaf649d42df84aac944ee625e49c292, type: 3}
   - {fileID: 7684572314874438837, guid: 853b86b1257a9489695b34d8710558d3, type: 3}
+  strokeParent: {fileID: 0}
   canvasCollider: {fileID: 0}
+  gameManager: {fileID: 0}
+--- !u!114 &-3329050679217992078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217406323033939158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac654f9665dca64d94c28ce123019dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 0}
+  cursorActiveTexture: {fileID: 0}

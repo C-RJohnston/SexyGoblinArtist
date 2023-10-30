@@ -1,29 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using JetBrains.Annotations;
 using UnityEngine;
 
-public class FlySwatterScript : MonoBehaviour
+public class CursorScript : MonoBehaviour
 {
-
-    [SerializeField] private GameObject flySpawner;
-    [SerializeField] private Texture2D cursorTexture;
+    [SerializeField] [CanBeNull] private Texture2D cursorTexture;
     
-    [SerializeField] private Texture2D cursorActiveTexture;
-
+    [SerializeField] [CanBeNull] private Texture2D cursorActiveTexture;
 
     private void OnEnable()
     {
-        flySpawner.SetActive(true);
         Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     private void OnDisable()
     {
-        if (flySpawner) flySpawner.SetActive(false);
         Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
-
     }
 
     // Start is called before the first frame update
@@ -44,6 +35,4 @@ public class FlySwatterScript : MonoBehaviour
             Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
         }
     }
-
-
 }

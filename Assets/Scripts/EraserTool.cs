@@ -28,14 +28,11 @@ public class EraserTool : MonoBehaviour
 
     private void Update()
     {
-        /*
-         * var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (canvasCollider.bounds.IntersectRay(mouseRay))
         {
             Drawing();
         }
-        */
-        Drawing();
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {

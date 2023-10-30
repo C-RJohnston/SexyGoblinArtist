@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5458123528408868176}
   - component: {fileID: 5458123528408868179}
+  - component: {fileID: 153126064000543792}
   m_Layer: 0
   m_Name: EraserTool
   m_TagString: Untagged
@@ -48,3 +49,18 @@ MonoBehaviour:
   eraser: {fileID: 6120663699336206281, guid: 6e3791afb30e143dcbd8a2e187baa9ab, type: 3}
   strokeParent: {fileID: 0}
   canvasCollider: {fileID: 0}
+  gameManager: {fileID: 0}
+--- !u!114 &153126064000543792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458123528408868178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac654f9665dca64d94c28ce123019dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 0}
+  cursorActiveTexture: {fileID: 0}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5954891008228950277}
   - component: {fileID: 5954891008228950282}
   - component: {fileID: 5954891008228950283}
+  - component: {fileID: 8611634899177974785}
   m_Layer: 0
   m_Name: Fly Swatter
   m_TagString: Untagged
@@ -95,6 +96,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 351284a62a7d5e84da941e74d1f75217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flySpawner: {fileID: 0}
+--- !u!114 &8611634899177974785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5954891008228950281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac654f9665dca64d94c28ce123019dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cursorTexture: {fileID: 2800000, guid: 6c52671a862f4a541b4676d8ee2b919d, type: 3}
