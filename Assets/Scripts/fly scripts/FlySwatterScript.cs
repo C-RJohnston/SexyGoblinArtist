@@ -9,7 +9,6 @@ public class FlySwatterScript : MonoBehaviour
 
     [SerializeField] private GameObject flySpawner;
 
-
     private void OnEnable()
     {
         flySpawner.SetActive(true);
@@ -20,7 +19,6 @@ public class FlySwatterScript : MonoBehaviour
     {
         if (flySpawner) flySpawner.SetActive(false);
         
-
     }
 
     // Start is called before the first frame update

@@ -7,6 +7,13 @@ public class GameManager : MonoBehaviour
     public int renderOrder = 0;
     public GameObject strokeParent;
 
+    public static GameManager Instance { get; private set; }
+
+    void Awake()
+    {
+        Instance = this;
+    }
+    
     // Update is called once per frame
     void Update()
     {

@@ -17,7 +17,7 @@ public class DrawTool : MonoBehaviour
     LineRenderer currentLineRenderer;
     public Collider2D canvasCollider;
 
-    public GameManager gameManager;
+    //public GameManager gameManager;
 
     Vector2 lastPos;
     private void Start()
@@ -102,21 +102,22 @@ public class DrawTool : MonoBehaviour
     void CreateBrush()
     {
         GameObject brushInstance = Instantiate(currentBrush);
-        gameManager.renderOrder++;
+        GameManager.Instance.renderOrder++;
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
 
-        currentLineRenderer.sortingOrder = gameManager.renderOrder;
+        //currentLineRenderer.sortingOrder = GameManager.Instance.renderOrder;
         currentLineRenderer.transform.parent = strokeParent.transform;
 
         //because you gotta have 2 points to start a line renderer, 
         Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
-
-        currentLineRenderer.SetPosition(0, mousePos);
-        currentLineRenderer.SetPosition(1, mousePos);
+        Vector3 linePos = new Vector3(mousePos.x, mousePos.y,
+            -(float)GameManager.Instance.renderOrder / 100);
+        currentLineRenderer.SetPosition(0, linePos);
+        currentLineRenderer.SetPosition(1, linePos);
 
     }
 
-    void AddAPoint(Vector2 pointPos)
+    void AddAPoint(Vector3 pointPos)
     {
         currentLineRenderer.positionCount++;
         int positionIndex = currentLineRenderer.positionCount - 1;
@@ -126,9 +127,11 @@ public class DrawTool : MonoBehaviour
     void PointToMousePos()
     {
         Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 linePos = new Vector3(mousePos.x, mousePos.y,
+            -(float)GameManager.Instance.renderOrder / 100);
         if (lastPos != mousePos)
         {
-            AddAPoint(mousePos);
+            AddAPoint(linePos);
             lastPos = mousePos;
         }
     }
