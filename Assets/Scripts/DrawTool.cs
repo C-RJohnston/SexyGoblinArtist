@@ -17,8 +17,6 @@ public class DrawTool : MonoBehaviour
     LineRenderer currentLineRenderer;
     public Collider2D canvasCollider;
 
-    
-
     public GameManager gameManager;
 
     Vector2 lastPos;
@@ -43,8 +41,6 @@ public class DrawTool : MonoBehaviour
         {
             Drawing();
         }
-        
-        Drawing();
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
