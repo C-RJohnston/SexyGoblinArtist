@@ -5,11 +5,10 @@ using UnityEngine;
 // TODO sync colour of splat to chosen brush colour
 public class SplatBehaviour : MonoBehaviour
 {
-    [SerializeField] private Color _colour;
     private void OnEnable()
     {
         var spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = _colour;
+        spriteRenderer.color = GameManager.Instance.currentBrush.GetComponent<Renderer>().sharedMaterial.color;
     }
 
     // Start is called before the first frame update

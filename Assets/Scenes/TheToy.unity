@@ -647,7 +647,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2783615197676439778, guid: f2a81c6c3c817416aaf89a448ead16fa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f2a81c6c3c817416aaf89a448ead16fa, type: 3}
 --- !u!4 &472096287 stripped
 Transform:
@@ -867,7 +868,8 @@ PrefabInstance:
       propertyPath: flySpawner
       value: 
       objectReference: {fileID: 1506521048}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 204558916815253768, guid: f0b4a8753105fbb43aa471eed9e2a8a2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f0b4a8753105fbb43aa471eed9e2a8a2, type: 3}
 --- !u!1 &656509345
 GameObject:
@@ -1702,6 +1704,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderOrder: 0
   strokeParent: {fileID: 94253776}
+  BrushList:
+  - {fileID: 3356720646353337747, guid: 00c106b6f772942a892a2929ed3ee29a, type: 3}
+  - {fileID: 6445578949204343921, guid: 20629fcc3feb84454b2474f3bd7e7cb3, type: 3}
+  - {fileID: 4890552590630788499, guid: 1d60b36fab89a4c8daa47dba3ea9ac33, type: 3}
+  - {fileID: 8892454353255890919, guid: 9aaf649d42df84aac944ee625e49c292, type: 3}
+  - {fileID: 5756556387985711422, guid: 853b86b1257a9489695b34d8710558d3, type: 3}
 --- !u!4 &1617996746
 Transform:
   m_ObjectHideFlags: 0

@@ -46,12 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_camera: {fileID: 0}
-  brushList:
-  - {fileID: 3356720646353337747, guid: 00c106b6f772942a892a2929ed3ee29a, type: 3}
-  - {fileID: 6445578949204343921, guid: 20629fcc3feb84454b2474f3bd7e7cb3, type: 3}
-  - {fileID: 4890552590630788499, guid: 1d60b36fab89a4c8daa47dba3ea9ac33, type: 3}
-  - {fileID: 8892454353255890919, guid: 9aaf649d42df84aac944ee625e49c292, type: 3}
-  - {fileID: 5756556387985711422, guid: 853b86b1257a9489695b34d8710558d3, type: 3}
   brushLines:
   - {fileID: 1802482195768209943, guid: 00c106b6f772942a892a2929ed3ee29a, type: 3}
   - {fileID: 5319486255475629359, guid: 20629fcc3feb84454b2474f3bd7e7cb3, type: 3}
@@ -60,7 +54,6 @@ MonoBehaviour:
   - {fileID: 7684572314874438837, guid: 853b86b1257a9489695b34d8710558d3, type: 3}
   strokeParent: {fileID: 0}
   canvasCollider: {fileID: 0}
-  gameManager: {fileID: 0}
 --- !u!114 &-3329050679217992078
 MonoBehaviour:
   m_ObjectHideFlags: 0

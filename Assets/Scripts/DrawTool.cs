@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,10 @@ public class DrawTool : MonoBehaviour
 {
     public Camera m_camera;
 
-    public List<GameObject> brushList;
+    //public List<GameObject> brushList;
     public LineRenderer[] brushLines;
-    private GameObject currentBrush;
-    private int brushOrder = 0;
+    //private GameObject currentBrush;
+    //private int brushOrder = 0;
 
     public GameObject strokeParent;
     
@@ -17,12 +18,12 @@ public class DrawTool : MonoBehaviour
     LineRenderer currentLineRenderer;
     public Collider2D canvasCollider;
 
-    //public GameManager gameManager;
 
     Vector2 lastPos;
+
+
     private void Start()
     {
-        currentBrush = brushList[0];
         
         foreach (LineRenderer lineRenderer in brushLines)
         {
@@ -50,12 +51,7 @@ public class DrawTool : MonoBehaviour
         {
             ChangeSize(-1);
         }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            ChangeBrush();
-        }
-                
+        
     }
 
     public void ChangeSize(int mult)
@@ -67,21 +63,7 @@ public class DrawTool : MonoBehaviour
             lineRenderer.endWidth += 0.03f * mult;
         }
     }
-
-    public void ChangeBrush()
-    {
-        brushOrder++;
-        if (brushOrder < brushList.Count)
-        {
-            currentBrush = brushList[brushOrder];
-        }
-        else
-        {
-            brushOrder = 0;
-            currentBrush = brushList[brushOrder];
-        }
-    }
-
+    
 
     void Drawing()
     {
@@ -101,7 +83,7 @@ public class DrawTool : MonoBehaviour
 
     void CreateBrush()
     {
-        GameObject brushInstance = Instantiate(currentBrush);
+        GameObject brushInstance = Instantiate(GameManager.Instance.currentBrush);
         GameManager.Instance.renderOrder++;
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
 
