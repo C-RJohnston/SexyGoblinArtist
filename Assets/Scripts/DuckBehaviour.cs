@@ -18,13 +18,19 @@ public class DuckBehaviour : MonoBehaviour
     private Bounds _validFlySpace;
     private Vector3 _target;
 
-
     public Transform breadParent;
     private List<Transform> crumbList = new List<Transform>();
     public GameObject breadCrumb;
 
     public GameManager gameManager;
     private float startScaleX;
+
+    private int trackOrder = 0;
+
+    private float printTimer = 0f;
+    private float printThresh;
+
+    public GameObject footPrint;
 
     void Start()
     {
@@ -67,24 +73,20 @@ public class DuckBehaviour : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, crumbList[0].position, speed * Time.deltaTime);
-            
+            transform.position = Vector3.MoveTowards(transform.position, crumbList[trackOrder].position, speed * Time.deltaTime);
         }
 
         //check input for mouseclick and if its in canvas instantiate breadcrumb, set its parent to breadParent
         var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Input.GetMouseButtonDown(0) )
+        if (Input.GetMouseButtonDown(0) & canvasCollider.bounds.IntersectRay(mouseRay))
         {
-            Vector3 mousePos = Input.mousePosition;
-            mousePos.z = gameManager.renderOrder / 100;
-            Vector3 crumbPos = m_camera.ScreenToWorldPoint(mousePos);
+            Vector3 crumbPos = m_camera.ScreenToWorldPoint(Input.mousePosition);
             crumbPos.z = gameManager.renderOrder / 100;
-            breadCrumb = Instantiate(breadCrumb, crumbPos, Quaternion.identity);
-            breadCrumb.transform.SetParent(breadParent);
-            crumbList.Add(breadCrumb.transform);
+            var newCrumb = Instantiate(breadCrumb, crumbPos, Quaternion.identity);
+            newCrumb.transform.SetParent(breadParent);
+            crumbList.Add(newCrumb.transform);
         }
 
-        
         if (transform.position.x < _target.x)
         {
             LookOtherWay(true);
@@ -93,8 +95,14 @@ public class DuckBehaviour : MonoBehaviour
         {
             LookOtherWay(false);
         }
-        
 
+        printTimer += Time.deltaTime;
+
+        if (printTimer > printThresh)
+        {
+            FootPrint();
+            printTimer = 0f;
+        }
     }
 
     private void LookOtherWay(bool lookRight)
@@ -111,10 +119,10 @@ public class DuckBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("BreadCrumb"))
+        if (collision.CompareTag("BreadCrumb"))
         {
-            Debug.Log("Yeh");
             Destroy(collision.gameObject);
+            trackOrder++;
         }
     }
 
@@ -124,5 +132,21 @@ public class DuckBehaviour : MonoBehaviour
             Random.Range(bounds.min.x, bounds.max.x),
             Random.Range(bounds.min.y, bounds.max.y)
         );
+    }
+
+    private void FootPrint()
+    {
+        if (gameManager.renderOrder % 2 == 0)
+        {
+            Vector3 newPos = new Vector3(transform.position.x, transform.position.y, gameManager.renderOrder / 100);
+            newPos.y -= 2.5f;
+            var newPrint = Instantiate(footPrint);
+            newPrint.transform.SetParent(transform);
+            gameManager.renderOrder++;
+        }
+        else
+        {
+
+        }
     }
 }
