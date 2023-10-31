@@ -392,7 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_camera: {fileID: 1069216053}
   directionChangeTime: 2.3
-  speed: 0.8
+  speed: 1.22
   threshold: 0
   canvasCollider: {fileID: 457279911}
   breadParent: {fileID: 1280565935}
@@ -408,7 +408,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.04948306, y: -0.14832336}

@@ -20,7 +20,7 @@ public class DuckBehaviour : MonoBehaviour
 
 
     public Transform breadParent;
-    private List<Transform> crumbList;
+    private List<Transform> crumbList = new List<Transform>();
     public GameObject breadCrumb;
 
     public GameManager gameManager;
@@ -67,12 +67,8 @@ public class DuckBehaviour : MonoBehaviour
         }
         else
         {
-            //add all breadcrumbs to the list and move towards the first one
-            foreach(Transform crumb in breadParent)
-            {
-                crumbList.Add(crumb);
-            }
-            transform.position = Vector2.MoveTowards(transform.position, crumbList[0].position, 0.1f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, crumbList[0].position, speed * Time.deltaTime);
+            
         }
 
         //check input for mouseclick and if its in canvas instantiate breadcrumb, set its parent to breadParent
@@ -82,8 +78,10 @@ public class DuckBehaviour : MonoBehaviour
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = gameManager.renderOrder / 100;
             Vector3 crumbPos = m_camera.ScreenToWorldPoint(mousePos);
+            crumbPos.z = gameManager.renderOrder / 100;
             breadCrumb = Instantiate(breadCrumb, crumbPos, Quaternion.identity);
             breadCrumb.transform.SetParent(breadParent);
+            crumbList.Add(breadCrumb.transform);
         }
 
         
@@ -111,6 +109,14 @@ public class DuckBehaviour : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("BreadCrumb"))
+        {
+            Debug.Log("Yeh");
+            Destroy(collision.gameObject);
+        }
+    }
 
     private static Vector2 GetRandomPointInBounds(Bounds bounds)
     {
