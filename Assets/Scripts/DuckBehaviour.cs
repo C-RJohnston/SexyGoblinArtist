@@ -28,9 +28,10 @@ public class DuckBehaviour : MonoBehaviour
     private int trackOrder = 0;
 
     private float printTimer = 0f;
-    private float printThresh;
+    public float printThresh;
 
     public GameObject footPrint;
+    public GameObject footParent;
 
     void Start()
     {
@@ -73,6 +74,7 @@ public class DuckBehaviour : MonoBehaviour
         }
         else
         {
+            _target = crumbList[trackOrder].position;
             transform.position = Vector3.MoveTowards(transform.position, crumbList[trackOrder].position, speed * Time.deltaTime);
         }
 
@@ -138,15 +140,25 @@ public class DuckBehaviour : MonoBehaviour
     {
         if (gameManager.renderOrder % 2 == 0)
         {
-            Vector3 newPos = new Vector3(transform.position.x, transform.position.y, gameManager.renderOrder / 100);
-            newPos.y -= 2.5f;
-            var newPrint = Instantiate(footPrint);
-            newPrint.transform.SetParent(transform);
+            Vector3 newPos = new Vector3(transform.position.x, transform.position.y-1f, gameManager.renderOrder / 100);
+            var newPrint = Instantiate(footPrint, newPos, Quaternion.identity);
+            newPrint.transform.SetParent(footParent.transform);
             gameManager.renderOrder++;
+            if (transform.position.x < _target.x)
+            {
+                newPrint.transform.localScale = new Vector3(-newPrint.transform.localScale.x, newPrint.transform.localScale.y, newPrint.transform.localScale.z);
+            }
         }
         else
         {
-
+            Vector3 newPos = new Vector3(transform.position.x, transform.position.y-0.7f, gameManager.renderOrder / 100);
+            var newPrint = Instantiate(footPrint, newPos, Quaternion.identity);
+            newPrint.transform.SetParent(footParent.transform);
+            gameManager.renderOrder++;
+            if (transform.position.x < _target.x)
+            {
+                newPrint.transform.localScale = new Vector3(-newPrint.transform.localScale.x, newPrint.transform.localScale.y, newPrint.transform.localScale.z);
+            }
         }
     }
 }
