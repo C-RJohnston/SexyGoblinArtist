@@ -53,6 +53,7 @@ public class DuckBehaviour : MonoBehaviour
 
         startScaleX = transform.localScale.x;
         //footParent.transform.SetParent(StrokeParent);
+        animator = GetComponent<Animator>();
     }
 
     private void OnDisable()
