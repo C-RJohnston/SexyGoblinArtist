@@ -8,7 +8,7 @@ public class DrawLine : MonoBehaviour
     private LineRenderer _lines;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         GameObject brushInstance = Instantiate(GameManager.Instance.currentBrush);
         GameManager.Instance.renderOrder++;
@@ -38,7 +38,7 @@ public class DrawLine : MonoBehaviour
     private void OnDisable()
     {
         var brushParent = GameObject.FindWithTag("StrokeManager");
-        _lines.transform.parent = brushParent.transform;
+        if(_lines && brushParent) _lines.transform.parent = brushParent.transform;
 
     }
 }
