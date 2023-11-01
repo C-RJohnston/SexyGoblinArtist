@@ -28,11 +28,11 @@ public class DrawLine : MonoBehaviour
     {
         _lines.positionCount++;
         GameManager.Instance.renderOrder++;
-        var linePos = new Vector3(
-            transform.position.x,
-            transform.position.y,
-            -(float)GameManager.Instance.renderOrder / 100);
-        _lines.SetPosition(_lines.positionCount - 1, linePos);
+        //var linePos = new Vector3(
+        //    transform.position.x,
+        //    transform.position.y,
+        //    -(float)GameManager.Instance.renderOrder / 100);
+        _lines.SetPosition(_lines.positionCount - 1, transform.position);
     }
 
     private void OnDisable()
