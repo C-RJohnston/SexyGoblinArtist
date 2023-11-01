@@ -11,6 +11,7 @@ public class ActivateTool : MonoBehaviour
     public GameObject pong;
     public GameObject duck;
     public GameObject phil;
+    public GameObject flowerBrush;
 
 
     public GameObject[] tools;
@@ -62,5 +63,13 @@ public class ActivateTool : MonoBehaviour
             tool.SetActive(false);
         }
         phil.SetActive(true);
+    }
+    public void actFlower()
+    {
+        foreach(GameObject tool in tools)
+        {
+            tool.SetActive(false);
+        }
+        flowerBrush.SetActive(true);
     }
 }

@@ -18,7 +18,8 @@ public class FlowerBrush : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        var flowerParentInst = Instantiate(flowerParent, transform.position, Quaternion.identity);
+        flowerParentInst.transform.SetParent(strokeParent);
     }
 
     // Update is called once per frame
@@ -27,20 +28,16 @@ public class FlowerBrush : MonoBehaviour
         timer += Time.deltaTime;
         var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetMouseButton(0) & timer > thresh)
+        if (Input.GetMouseButton(0) & timer > thresh & canvasCollider.bounds.IntersectRay(mouseRay))
         {
             Vector3 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = -(float)GameManager.Instance.renderOrder / 100;
             var newFlower = Instantiate(flowers[Random.Range(0, flowers.Length)],mousePos,Quaternion.identity);
-            newFlower.transform.SetParent(flowerParent.transform);
+            newFlower.transform.SetParent(strokeParent);
             
             timer = 0;
         }
     }
 
-    private void OnDisable()
-    {
-        var flowerParentInst = Instantiate(flowerParent, transform.position, Quaternion.identity);
-        flowerParentInst.transform.SetParent(strokeParent);
-    }
+    
 }
