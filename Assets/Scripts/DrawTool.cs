@@ -6,11 +6,9 @@ using UnityEngine;
 public class DrawTool : MonoBehaviour
 {
     public Camera m_camera;
-
-    //public List<GameObject> brushList;
+    
     public LineRenderer[] brushLines;
-    //private GameObject currentBrush;
-    //private int brushOrder = 0;
+
 
     public GameObject strokeParent;
     

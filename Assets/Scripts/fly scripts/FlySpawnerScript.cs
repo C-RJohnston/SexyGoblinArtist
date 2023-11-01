@@ -17,18 +17,18 @@ public class FlySpawnerScript : MonoBehaviour
     
     private float _timer;
 
-    [CanBeNull] private GameObject _canvasObject;
+    
     private Bounds _validFlySpace;
 
     // Start is called before the first frame update
     void Start()
     {
         // check to see if the scene contains a canvas
-        _canvasObject = GameObject.FindWithTag("Canvas");
+        var canvasObject = GameObject.FindWithTag("Canvas");
         
-        if (_canvasObject)
+        if (canvasObject)
         {
-            var rect = _canvasObject.GetComponent<Renderer>();
+            var rect = canvasObject.GetComponent<Renderer>();
             _validFlySpace = rect.bounds;
         }
         else
