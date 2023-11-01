@@ -13,6 +13,8 @@ public class FlowerBrush : MonoBehaviour
     public float thresh = .5f;
 
     public Collider2D canvasCollider;
+
+    public GameObject flowerParent;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,7 @@ public class FlowerBrush : MonoBehaviour
             Vector3 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = -(float)GameManager.Instance.renderOrder / 100;
             var newFlower = Instantiate(flowers[Random.Range(0, flowers.Length)],mousePos,Quaternion.identity);
-            newFlower.transform.SetParent(transform);
+            newFlower.transform.SetParent(flowerParent.transform);
             
             timer = 0;
         }
@@ -38,6 +40,7 @@ public class FlowerBrush : MonoBehaviour
 
     private void OnDisable()
     {
-        
+        var flowerParentInst = Instantiate(flowerParent, transform.position, Quaternion.identity);
+        flowerParentInst.transform.SetParent(strokeParent);
     }
 }
