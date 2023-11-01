@@ -14,8 +14,12 @@ public class DrawLine : MonoBehaviour
         GameManager.Instance.renderOrder++;
         _lines = brushInstance.GetComponent<LineRenderer>();
         //_lines = GetComponent<LineRenderer>();
-        _lines.SetPosition(0, transform.position);
-        _lines.SetPosition(1, transform.position);
+        var linePos = new Vector3(
+            transform.position.x,
+            transform.position.y,
+            -(float)GameManager.Instance.renderOrder / 100);
+        _lines.SetPosition(0, linePos);
+        _lines.SetPosition(1, linePos);
         _lines.material = GameManager.Instance.currentBrush.GetComponent<Renderer>().sharedMaterial;
     }
 
@@ -23,7 +27,12 @@ public class DrawLine : MonoBehaviour
     void Update()
     {
         _lines.positionCount++;
-        _lines.SetPosition(_lines.positionCount - 1, transform.position);
+        GameManager.Instance.renderOrder++;
+        var linePos = new Vector3(
+            transform.position.x,
+            transform.position.y,
+            -(float)GameManager.Instance.renderOrder / 100);
+        _lines.SetPosition(_lines.positionCount - 1, linePos);
     }
 
     private void OnDisable()
