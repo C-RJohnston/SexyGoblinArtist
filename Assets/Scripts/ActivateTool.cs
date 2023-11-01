@@ -9,9 +9,10 @@ public class ActivateTool : MonoBehaviour
     public GameObject eraseTool;
     public GameObject flySwatter;
     public GameObject pong;
+    public GameObject duck;
+
 
     public GameObject[] tools;
-
     public void actDraw()
     {
         foreach (GameObject tool in tools)
@@ -43,5 +44,13 @@ public class ActivateTool : MonoBehaviour
             tool.SetActive(false);
         }
         pong.SetActive(true);
+    }
+    public void actDuck()
+    {
+        foreach (GameObject tool in tools)
+        {
+            tool.SetActive(false);
+        }
+        duck.SetActive(true);
     }
 }
