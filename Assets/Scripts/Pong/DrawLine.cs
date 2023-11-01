@@ -27,7 +27,7 @@ public class DrawLine : MonoBehaviour
     void Update()
     {
         _lines.positionCount++;
-        GameManager.Instance.renderOrder++;
+        //GameManager.Instance.renderOrder++;
         //var linePos = new Vector3(
         //    transform.position.x,
         //    transform.position.y,
