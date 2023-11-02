@@ -30,7 +30,14 @@ public class DrawTool : MonoBehaviour
         }
     }
 
-
+    private void OnDisable()
+    {
+        foreach (LineRenderer lineRenderer in brushLines)
+        {
+            lineRenderer.startWidth = 0.1f;
+            lineRenderer.endWidth = 0.1f;
+        }
+    }
 
     private void Update()
     {
