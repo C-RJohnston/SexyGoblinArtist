@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
 
+    public DrawTool drawTool;
+
     void Awake()
     {
         Instance = this;
@@ -55,10 +57,12 @@ public class GameManager : MonoBehaviour
         if (_brushOrder < BrushList.Count)
         {
             currentBrush = BrushList[_brushOrder];
+            drawTool.cursorRenderer.color = drawTool.cursorColors[_brushOrder];
         }
         else
         {
             _brushOrder = 0;
+            drawTool.cursorRenderer.color = drawTool.cursorColors[_brushOrder];
             currentBrush = BrushList[_brushOrder];
         }
     }

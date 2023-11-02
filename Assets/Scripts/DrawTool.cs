@@ -6,30 +6,35 @@ using UnityEngine;
 public class DrawTool : MonoBehaviour
 {
     public Camera m_camera;
-    
-    public LineRenderer[] brushLines;
 
+    public LineRenderer[] brushLines;
 
     public GameObject strokeParent;
     
-
     LineRenderer currentLineRenderer;
     public Collider2D canvasCollider;
 
-
     Vector2 lastPos;
 
+    public Color[] cursorColors;
+    public GameObject cursor;
+    public SpriteRenderer cursorRenderer;
+    private Vector3 cursorSize = new Vector3(1f,1f,1f);
 
     private void Start()
     {
-        
         foreach (LineRenderer lineRenderer in brushLines)
         {
             lineRenderer.startWidth = 0.1f;
             lineRenderer.endWidth = 0.1f;
         }
+        cursorRenderer = cursor.GetComponent<SpriteRenderer>();
+        cursorRenderer.color = cursorColors[0];
+        cursorSize = cursor.transform.localScale;
+        Cursor.visible = false;
     }
 
+    
     private void OnDisable()
     {
         foreach (LineRenderer lineRenderer in brushLines)
@@ -37,11 +42,16 @@ public class DrawTool : MonoBehaviour
             lineRenderer.startWidth = 0.1f;
             lineRenderer.endWidth = 0.1f;
         }
+        cursor.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        Cursor.visible = true;
     }
 
     private void Update()
     {
-        
+        var mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = -2;
+        cursor.transform.position = mousePos;
+
         var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (canvasCollider.bounds.IntersectRay(mouseRay))
         {
@@ -66,6 +76,10 @@ public class DrawTool : MonoBehaviour
         {
             lineRenderer.startWidth += 0.03f * mult;
             lineRenderer.endWidth += 0.03f * mult;
+
+            cursorSize.x += (0.007f * mult) ;
+            cursorSize.y += (0.007f * mult) ;
+            cursor.transform.localScale = cursorSize;
         }
     }
     
