@@ -13,11 +13,12 @@ public class PhilScript : MonoBehaviour
 
     private Vector3 _target;
     private float _timeElapsed;
+    private GameObject _speechBubble;
    
     // Start is called before the first frame update
     void Start()
     {
-        
+        _speechBubble = transform.GetChild(0).gameObject;
     }
 
     private void OnEnable()
@@ -37,9 +38,11 @@ public class PhilScript : MonoBehaviour
             if (_timeElapsed >= waitTime)
             {
                 _target = start;
+                _speechBubble.SetActive(false);
             }
             else
             {
+                _speechBubble.SetActive(true);
                 transform.position = end;
                 _timeElapsed += Time.deltaTime;
             }
