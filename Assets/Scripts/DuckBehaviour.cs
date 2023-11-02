@@ -55,10 +55,12 @@ public class DuckBehaviour : MonoBehaviour
         //footParent.transform.SetParent(StrokeParent);
         transform.position = new Vector3(transform.position.x, transform.position.y, -(float)GameManager.Instance.renderOrder / 100);
         animator = GetComponent<Animator>();
+        GameManager.Instance.renderOrder++;
     }
 
     private void OnDisable()
     {
+        
         Vector3 instPos = StrokeParent.transform.position;
         var footParentInst = Instantiate(footParent, instPos, Quaternion.identity);
         footParentInst.transform.SetParent(StrokeParent);
@@ -81,16 +83,18 @@ public class DuckBehaviour : MonoBehaviour
         if(breadParent.transform.childCount == 0)
         {
             _timer += Time.deltaTime;
-
+            printThresh = .2f;
             animator.speed = 1f;
             // move towards the set target
             var step = speed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, _target, step);
 
+
             // change direction after a set amount of time
             if (_timer >= directionChangeTime)
             {
                 _target = GetRandomPointInBounds(_validFlySpace);
+                
                 _timer -= directionChangeTime;
             }
 
@@ -99,6 +103,7 @@ public class DuckBehaviour : MonoBehaviour
             if (dist <= threshold)
             {
                 _target = GetRandomPointInBounds(_validFlySpace);
+                
                 _timer -= directionChangeTime;
             }
         }
@@ -107,8 +112,10 @@ public class DuckBehaviour : MonoBehaviour
             //_target = crumbList[trackOrder].position;
             
             _target = breadParent.GetChild(0).transform.position;
+            
             transform.position = Vector3.MoveTowards(transform.position, _target, speed * Time.deltaTime * 2f);
             animator.speed = 2f;
+            printThresh = .1f;
         }
 
         //check input for mouseclick and if its in canvas instantiate breadcrumb, set its parent to breadParent
@@ -143,6 +150,7 @@ public class DuckBehaviour : MonoBehaviour
         //rotate duck between two values for walking anim
         transform.rotation = Quaternion.Slerp(from.rotation, to.rotation, timeCount);
         timeCount = timeCount + Time.deltaTime;
+        transform.position = new Vector3(transform.position.x, transform.position.y, -(float)GameManager.Instance.renderOrder / 100);
     }
 
     private void LookOtherWay(bool lookRight)
