@@ -53,6 +53,7 @@ public class DuckBehaviour : MonoBehaviour
 
         startScaleX = transform.localScale.x;
         //footParent.transform.SetParent(StrokeParent);
+        transform.position = new Vector3(transform.position.x, transform.position.y, -(float)GameManager.Instance.renderOrder / 100);
         animator = GetComponent<Animator>();
     }
 
@@ -103,8 +104,10 @@ public class DuckBehaviour : MonoBehaviour
         }
         else
         {
-            _target = crumbList[trackOrder].position;
-            transform.position = Vector3.MoveTowards(transform.position, crumbList[trackOrder].position, speed * Time.deltaTime * 2f);
+            //_target = crumbList[trackOrder].position;
+            
+            _target = breadParent.GetChild(0).transform.position;
+            transform.position = Vector3.MoveTowards(transform.position, _target, speed * Time.deltaTime * 2f);
             animator.speed = 2f;
         }
 
@@ -160,6 +163,7 @@ public class DuckBehaviour : MonoBehaviour
         {
             Destroy(collision.gameObject);
             trackOrder++;
+            
         }
     }
 
