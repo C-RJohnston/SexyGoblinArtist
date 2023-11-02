@@ -21,6 +21,7 @@ public class DrawLine : MonoBehaviour
         _lines.SetPosition(0, linePos);
         _lines.SetPosition(1, linePos);
         _lines.material = GameManager.Instance.currentBrush.GetComponent<Renderer>().sharedMaterial;
+        _lines.material.color = Color.yellow;
     }
 
     // Update is called once per frame
