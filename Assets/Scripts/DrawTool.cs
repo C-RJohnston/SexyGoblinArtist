@@ -43,6 +43,7 @@ public class DrawTool : MonoBehaviour
             lineRenderer.endWidth = 0.1f;
         }
         cursor.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        cursorSize = new Vector3(0.1f, 0.1f, 0.1f);
         Cursor.visible = true;
     }
 
@@ -72,15 +73,21 @@ public class DrawTool : MonoBehaviour
     public void ChangeSize(int mult)
     {
         
+        
         foreach (LineRenderer lineRenderer in brushLines)
         {
-            lineRenderer.startWidth += 0.03f * mult;
-            lineRenderer.endWidth += 0.03f * mult;
+            if (lineRenderer.startWidth < 0.7f)
+            {
+                lineRenderer.startWidth += 0.03f * mult;
+                lineRenderer.endWidth += 0.03f * mult;
 
-            cursorSize.x += (0.007f * mult) ;
-            cursorSize.y += (0.007f * mult) ;
-            cursor.transform.localScale = cursorSize;
+                cursorSize.x += (0.007f * mult);
+                cursorSize.y += (0.007f * mult);
+                cursor.transform.localScale = cursorSize;
+            }
+            
         }
+        
     }
     
 
