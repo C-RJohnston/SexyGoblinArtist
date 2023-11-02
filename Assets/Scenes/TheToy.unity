@@ -2486,6 +2486,10 @@ PrefabInstance:
       propertyPath: canvasCollider
       value: 
       objectReference: {fileID: 158282228}
+    - target: {fileID: 7375982173686551555, guid: 03f89043ca3c4458594fe083583c1160, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.85
+      objectReference: {fileID: 0}
     - target: {fileID: 7375982174591840812, guid: 03f89043ca3c4458594fe083583c1160, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -3553,6 +3557,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1956223989}
     m_Modifications:
+    - target: {fileID: 153126064000543792, guid: 90faaf3af52044450b094e573ddf5668, type: 3}
+      propertyPath: cursorTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 65c019fdd2c2f42ec8d762fce6b0942e, type: 3}
+    - target: {fileID: 153126064000543792, guid: 90faaf3af52044450b094e573ddf5668, type: 3}
+      propertyPath: cursorActiveTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 65c019fdd2c2f42ec8d762fce6b0942e, type: 3}
     - target: {fileID: 5458123528408868176, guid: 90faaf3af52044450b094e573ddf5668, type: 3}
       propertyPath: m_RootOrder
       value: 0
