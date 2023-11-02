@@ -10,6 +10,7 @@ public class ActivateTool : MonoBehaviour
     public GameObject flySwatter;
     public GameObject pong;
     public GameObject duck;
+    public GameObject fill;
     public GameObject phil;
     public GameObject flowerBrush;
 
@@ -55,7 +56,15 @@ public class ActivateTool : MonoBehaviour
         }
         duck.SetActive(true);
     }
-    
+    public void ActFill()
+    {
+        foreach (GameObject tool in tools)
+        {
+            tool.SetActive(false);
+        }
+        fill.SetActive(true);
+    }
+
     public void actPhil()
     {
         foreach (GameObject tool in tools)
